@@ -2,7 +2,7 @@ Rest API
 =======
 
 Rest API is one of the popular webservices in the world. This code implements Rest API for performing word count operation in a file, sorting array of numbers, checking whether a number is prime or not.
-For implementing this API we used flask python frame work. For convering the results in to json format, we used jsonify python library
+For implementing this API we used flask python frame work. For converting the results in to json format, we used jsonify python library
 
 Usage
 -----
