@@ -30,7 +30,7 @@ Content-Type: application/json
 From the above it is clear that server response is in the form of json data type
 #### Prime number or not ####
 * This service helps to check whether the number is prime or not
-* Here we are using one query parameter "number" which is of string data-type
+* Here we are using one query parameter "number" which is of integer data-type
 Below is the request for checking whether a number is prime or not. you can use either GET or POST requests for the below url
 ```API
 http://ec2-35-160-1-123.us-west-2.compute.amazonaws.com/api/prime?number=17
