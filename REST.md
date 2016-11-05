@@ -1,17 +1,22 @@
 Rest API
 =======
 
-Make HTTP requests from a client
+Rest API is one of the popular webservices in the world. This code implements Rest API for performing word count operation in a file, sorting array of numbers, checking whether a number is prime or not.
+For implementing this API we used flask python frame work. For converting the results in to json format, we used jsonify python library
 
 Usage
 -----
 
-### Making a basic request: ###
+### Making a request using POST or GET: ###
 
+#### Sorting array of numbers ####
+Sorting array of numbers is required for so many applications. We are providing REST API service for sorting array of numbers.
+In this service we are going to pass query parameters to the http url. "array" parameter is of string data-type which we use to send array of numbers as string which are seperated by comma.
+Below is the request for sorting 34,7,8,9,1 array of numbers. you can use either GET or POST requests for the below url  
 ```API
 http://ec2-35-160-1-123.us-west-2.compute.amazonaws.com/api/sort?array=34,7,8,9,1
 ```
-In this example, the rest api takes an argument of "array" which is a string data type by using either GET or POST HTTP verbs. Then the results are returned as plain text in JSON format
+Response from server with header information
 ```Result
 HTTP/1.1 200 OK
 Date: Mon, 31 Oct 2016 17:23:48 GMT
@@ -22,9 +27,15 @@ Content-Type: application/json
 {"result":[1,7,8,9,34]}
 
 ```
+From the above it is clear that server response is in the form of json data type
+#### Prime number or not ####
+* This service helps to check whether the number is prime or not
+* Here we are using one query parameter "number" which is of string data-type
+Below is the request for checking whether a number is prime or not. you can use either GET or POST requests for the below url
 ```API
 http://ec2-35-160-1-123.us-west-2.compute.amazonaws.com/api/prime?number=17
 ```
+Response from server with header information
 ```Result
 HTTP/1.1 200 OK
 Date: Mon, 31 Oct 2016 18:52:33 GMT
@@ -34,3 +45,22 @@ Content-Type: application/json
 
 {"result":"Prime Number"}
 ```
+From the above it is clear that server response is in the form of json data type
+#### Word frequency in a file ####
+* This service helps to find the frequency of word in a file
+* Here you have to send text file and a word which you want to know the frequency in a file 
+Below is the sample request using curl. In the below request we are uploading a file named  "sample" and also sending "are" word to the server. Here we are finding the frequency of "are" word in sample text file. You can use either GET or POST requests for the below url
+```API
+curl -i -X POST  -F "file=@sample" -F "word=are" http://ec2-35-160-1-123.us-west-2.compute.amazonaws.com/api/wordfreq
+```
+Response from server  with header information
+```Result
+HTTP/1.1 200 OK
+Date: Tue, 01 Nov 2016 16:13:20 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Content-Length: 13
+Content-Type: application/json
+
+{"result":8}
+```
+From the above it is clear that server response is in the form of json data type
