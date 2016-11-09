@@ -74,6 +74,7 @@ curl -i -X POST  -F "file=@sample" -F "word=are" http://ec2-35-160-1-123.us-west
 
 ##### Parameters #####
 **file:** Source file
+
 **word:** Target word, which is of string data type
 
 ##### Example of API call #####
