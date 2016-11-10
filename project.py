@@ -3,7 +3,9 @@ import os,sys
 from flask import Flask, jsonify, render_template, request, abort, make_response
 from flask import Response
 import lxml.etree as etree
-import xml.dom.minidom
+
+ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
+file_path = ROOT_PATH + "/" + "rsdl"
 
 
 app = Flask(__name__)
@@ -12,7 +14,7 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 @app.route('/api/rsdl',methods=['GET','POST'])
 def rsdl() :
    parser = etree.XMLParser(ns_clean=True)
-   tree   = etree.parse("rsdl", parser)
+   tree   = etree.parse(file_path, parser)
    result =  etree.tostring(tree, pretty_print = False)
    return Response(result, mimetype='application/xml')
 
@@ -64,5 +66,5 @@ def get_prime():
         else:
         	return jsonify({'result':'error:number should be a positive integer'})
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port='80' )
+    app.run()
 
