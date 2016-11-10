@@ -9,7 +9,7 @@ import xml.dom.minidom
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 
-@app.route('/api',methods=['GET','POST'])
+@app.route('/api/rsdl',methods=['GET','POST'])
 def rsdl() :
    parser = etree.XMLParser(ns_clean=True)
    tree   = etree.parse("rsdl", parser)
